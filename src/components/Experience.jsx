@@ -77,54 +77,42 @@ function Experience() {
   const closePopup = () => setSelectedExperience(null);
 
   return (
-      <section id="experience" className="py-20 px-8 bg-[#0a192f] text-center">
+      <section id="experience" className="py-20 px-6 sm:px-8 bg-[#0a192f] text-center">
         <h2 className="text-3xl font-bold text-[#64ffda] mb-8">Experience</h2>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {experiences.map((exp, i) => (
               <div
                   key={i}
                   onClick={() => openPopup(exp)}
                   className="bg-gray-800 p-6 rounded-lg shadow-lg cursor-pointer
-                       transition-transform duration-300 hover:scale-105
-                       hover:shadow-[0_0_25px_rgba(100,255,218,0.6)]"
+               transition-transform duration-300 hover:scale-105 focus:scale-105 active:scale-105
+               hover:shadow-[0_0_25px_rgba(100,255,218,0.6)] focus:shadow-[0_0_25px_rgba(100,255,218,0.6)] active:shadow-[0_0_25px_rgba(100,255,218,0.6)]"
               >
                 <h3 className="text-xl font-bold text-white">{exp.company}</h3>
                 <p className="text-sm text-gray-400">{exp.duration}</p>
-                <p className="text-gray-300">{exp.shortDescription}</p>
+                <p className="text-gray-300 mt-2">{exp.shortDescription}</p>
               </div>
           ))}
         </div>
 
-        {/* Popup Modal */}
         {selectedExperience && (
             <div
-                className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+                className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50"
                 onClick={closePopup}
             >
               <div
                   className="bg-[#0d1b2a] border border-[#64ffda]/40 rounded-xl p-6 max-w-xl w-full shadow-lg text-left text-white relative"
                   onClick={(e) => e.stopPropagation()}
               >
-                {/* Header (Logo + Role) */}
-                <div className="flex items-center gap-4 mb-4">
-                  <img
-                      src={selectedExperience.logo}
-                      alt="Logo"
-                      className="w-14 h-14 object-contain"
-                  />
-                  <h3 className="text-2xl font-bold text-[#64ffda]">
+                <div className="flex flex-col sm:flex-row items-center gap-4 mb-4">
+                  <img src={selectedExperience.logo} alt="Logo" className="w-14 h-14 object-contain" />
+                  <h3 className="text-2xl font-bold text-[#64ffda] text-center sm:text-left">
                     {selectedExperience.role}
                   </h3>
                 </div>
-
-                {/* Duration */}
-                <p className="text-gray-300 text-lg mb-4">
-                  {selectedExperience.duration}
-                </p>
-
-                {/* Details */}
-                <ul className="space-y-3">
+                <p className="text-gray-300 text-lg mb-4">{selectedExperience.duration}</p>
+                <ul className="space-y-3 text-sm sm:text-base">
                   {selectedExperience.details.map((point, index) => (
                       <li key={index} className="relative pl-6 text-gray-300">
                         <span className="absolute left-0 text-[#64ffda]">•</span>

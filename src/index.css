@@ -20,3 +20,21 @@ body {
   color: #64ffda; /* Cyan bullet */
   font-size: 1rem;
 }
+@layer utilities {
+  .hover-touch-effect:hover,
+  .hover-touch-effect:focus,
+  .hover-touch-effect:active {
+    transform: scale(1.10);
+    color: #64ffda;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .hover-touch-shadow:hover,
+  .hover-touch-shadow:focus,
+  .hover-touch-shadow:active {
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.6);
+    transform: scale(1.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+}
+

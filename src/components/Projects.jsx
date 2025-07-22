@@ -62,16 +62,18 @@ function Projects() {
     const closePopup = () => setSelectedProject(null);
 
     return (
-        <section id="projects" className="py-20 bg-[#0a192f] text-center">
+        <section id="projects" className="py-20 bg-[#0a192f] text-center px-4 sm:px-6">
             <h2 className="text-3xl font-bold text-[#64ffda] mb-8">Projects</h2>
 
             {/* Projects Grid */}
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 {projects.map((project, i) => (
                     <div
                         key={i}
                         onClick={() => openPopup(project)}
-                        className="bg-gray-800 p-4 rounded-lg shadow-lg cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(100,255,218,0.6)]"
+                        className="bg-gray-800 p-4 rounded-lg shadow-lg cursor-pointer
+              transition-transform duration-300 hover:scale-105 focus:scale-105 active:scale-105
+              hover:shadow-[0_0_20px_rgba(100,255,218,0.6)] focus:shadow-[0_0_20px_rgba(100,255,218,0.6)] active:shadow-[0_0_20px_rgba(100,255,218,0.6)]"
                     >
                         <h3 className="text-lg font-bold text-white mb-2">{project.title}</h3>
                         <img
@@ -88,11 +90,11 @@ function Projects() {
             {/* Popup Modal */}
             {selectedProject && (
                 <div
-                    className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+                    className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50"
                     onClick={closePopup}
                 >
                     <div
-                        className="bg-[#112240] p-6 rounded-lg max-w-lg w-full text-left text-white relative"
+                        className="bg-[#112240] p-6 rounded-lg max-w-lg w-full shadow-lg text-left text-white relative"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <h3 className="text-2xl font-bold text-[#64ffda] mb-4">
