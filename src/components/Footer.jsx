@@ -1,12 +1,11 @@
-
 import React from "react";
 
 function Footer() {
-  return (
-    <footer className="bg-gray-800 text-center py-4 text-gray-400">
-      © {new Date().getFullYear()} Salugu Rakesh. All rights reserved.
-    </footer>
-  );
+    return (
+        <footer className="bg-[#0a192f] py-6 text-center text-gray-400 text-sm" data-aos="fade-up">
+            © {new Date().getFullYear()} Salugu Rakesh | All rights reserved.
+        </footer>
+    );
 }
 
 export default Footer;

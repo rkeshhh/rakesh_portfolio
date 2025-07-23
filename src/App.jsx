@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -9,16 +12,17 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 function App() {
+    useEffect(() => {
+        AOS.init({ duration: 1000, once: true, offset: 50 });
+    }, []);
+
     return (
         <div className="bg-[#0a192f] text-white">
             <Navbar />
             <Hero />
             <About />
-            {/* Skills should come first */}
             <Skills />
-            {/* Experience after Skills */}
             <Experience />
-            {/* Projects after Experience */}
             <Projects />
             <Contact />
             <Footer />

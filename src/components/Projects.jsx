@@ -62,47 +62,34 @@ function Projects() {
     const closePopup = () => setSelectedProject(null);
 
     return (
-        <section id="projects" className="py-20 bg-[#0a192f] text-center px-4 sm:px-6">
+        <section id="projects" className="py-20 bg-[#0a192f] text-center px-4 sm:px-6" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-[#64ffda] mb-8">Projects</h2>
-
-            {/* Projects Grid */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 {projects.map((project, i) => (
                     <div
                         key={i}
                         onClick={() => openPopup(project)}
+                        data-aos="zoom-in"
                         className="bg-gray-800 p-4 rounded-lg shadow-lg cursor-pointer
-              transition-transform duration-300 hover:scale-105 focus:scale-105 active:scale-105
-              hover:shadow-[0_0_20px_rgba(100,255,218,0.6)] focus:shadow-[0_0_20px_rgba(100,255,218,0.6)] active:shadow-[0_0_20px_rgba(100,255,218,0.6)]"
+                       transition-transform duration-300 hover:scale-105 focus:scale-105 active:scale-105
+                       hover:shadow-[0_0_20px_rgba(100,255,218,0.6)]"
                     >
                         <h3 className="text-lg font-bold text-white mb-2">{project.title}</h3>
-                        <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-40 object-cover rounded mb-4"
-                        />
+                        <img src={project.image} alt={project.title} className="w-full h-40 object-cover rounded mb-4" />
                         <p className="text-sm text-gray-400">{project.duration}</p>
                         <p className="text-gray-300 mt-2">{project.shortDescription}</p>
                     </div>
                 ))}
             </div>
 
-            {/* Popup Modal */}
             {selectedProject && (
-                <div
-                    className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50"
-                    onClick={closePopup}
-                >
+                <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50" onClick={closePopup}>
                     <div
                         className="bg-[#112240] p-6 rounded-lg max-w-lg w-full shadow-lg text-left text-white relative"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <h3 className="text-2xl font-bold text-[#64ffda] mb-4">
-                            {selectedProject.title}
-                        </h3>
-                        <p className="text-sm text-gray-400 mb-4">
-                            {selectedProject.duration}
-                        </p>
+                        <h3 className="text-2xl font-bold text-[#64ffda] mb-4">{selectedProject.title}</h3>
+                        <p className="text-sm text-gray-400 mb-4">{selectedProject.duration}</p>
                         <ul className="list-disc pl-5 space-y-2 text-gray-300">
                             {selectedProject.details.map((point, index) => (
                                 <li key={index}>{point}</li>
